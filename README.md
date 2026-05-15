@@ -142,17 +142,6 @@ assetManager.dispose();
 - Logs de erro são exibidos mas não interrompem execução
 - Try-catch garante robustez
 
-**Para adicionar sons:**
-
-1. Coloque seus arquivos na pasta `assets/sounds/`
-2. Atualize os nomes em `Main.java` create() se necessário
-3. O AssetManager carregará automaticamente
-
-**Fontes recomendadas para sons:**
-- [Freesound.org](https://freesound.org)
-- [OpenGameArt.org](https://opengameart.org)
-- [Zapsplat](https://www.zapsplat.com)
-
 ## Explicação Técnica
 
 ### Timer Delta-Based
