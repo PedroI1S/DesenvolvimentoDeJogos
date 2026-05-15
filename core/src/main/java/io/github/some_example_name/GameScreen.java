@@ -1,6 +1,7 @@
 package io.github.some_example_name;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
@@ -49,6 +50,7 @@ public class GameScreen implements Screen {
     private Archer archer;
     private ArrowPool arrowPool;
     private EnemyPool enemyPool;
+    private ParticlePool particlePool;
     private SpeechBubble speechBubble;
     
     private float currentZoom = 1f;
@@ -65,6 +67,7 @@ public class GameScreen implements Screen {
     
     private GameInputProcessor inputProcessor;
     private final Vector3 touchPoint = new Vector3();
+    private boolean debugHitboxes = false;
 
     public GameScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
@@ -119,6 +122,7 @@ public class GameScreen implements Screen {
         // Inicializa object pools
         arrowPool = new ArrowPool(shootSound, 10, 50);
         enemyPool = new EnemyPool(5, 30);
+        particlePool = new ParticlePool(20, 100);
         
         // Inicializa objetos do jogo
         archer = new Archer(WORLD_WIDTH / 2f, WORLD_HEIGHT / 2f, shootSound);
@@ -173,12 +177,31 @@ public class GameScreen implements Screen {
                 enemy.render(shapeRenderer);
             }
         }
+        
+        // Renderiza hitboxes em modo debug
+        if (debugHitboxes) {
+            for (Enemy enemy : enemyPool.getInUse()) {
+                if (enemy.isAlive()) {
+                    enemy.getHitbox().render(shapeRenderer);
+                }
+            }
+        }
         shapeRenderer.end();
 
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         speechBubble.render(batch);
         batch.end();
+        
+        // Renderiza partículas
+        shapeRenderer.setProjectionMatrix(camera.combined);
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        for (Particle particle : particlePool.getInUse()) {
+            if (particle.isAlive()) {
+                particle.render(shapeRenderer);
+            }
+        }
+        shapeRenderer.end();
         
         // Renderiza UI
         batch.begin();
@@ -232,7 +255,12 @@ public class GameScreen implements Screen {
                     Gdx.app.log("Collision", "Arrow hit enemy!");
                     enemy.kill();
                     arrow.getLifeTimer().finished = true;
-                    speechBubble.show("Acertou!", enemy.getPosition().x, enemy.getPosition().y + enemy.getRadius());
+                    
+                    Vector2 impactPos = enemy.getPosition();
+                    speechBubble.show("Acertou!", impactPos.x, impactPos.y + enemy.getRadius());
+                    
+                    // Cria partículas de impacto
+                    createImpactParticles(impactPos.x, impactPos.y);
                     
                     if (impactSound != null) {
                         try {
@@ -263,6 +291,22 @@ public class GameScreen implements Screen {
             Enemy enemy = enemiesInUse.get(i);
             if (!enemy.isAlive()) {
                 enemyPool.free(enemy);
+            }
+        }
+        
+        // Atualiza partículas
+        List<Particle> particlesInUse = particlePool.getInUse();
+        for (Particle particle : particlesInUse) {
+            if (particle.isAlive()) {
+                particle.update(delta);
+            }
+        }
+        
+        // Remove partículas mortas do pool
+        for (int i = particlesInUse.size() - 1; i >= 0; i--) {
+            Particle particle = particlesInUse.get(i);
+            if (!particle.isAlive()) {
+                particlePool.free(particle);
             }
         }
         
@@ -314,6 +358,11 @@ public class GameScreen implements Screen {
             currentZoom = 1f;
             inputProcessor.rPressed = false;
         }
+        
+        // Toggle hitbox debug com H
+        if (Gdx.input.isKeyJustPressed(Input.Keys.H)) {
+            debugHitboxes = !debugHitboxes;
+        }
     }
 
     private void updateCamera(float delta) {
@@ -355,8 +404,25 @@ public class GameScreen implements Screen {
         font.draw(batch, "Arrows Pool: " + arrowPool.getInUseCount() + " in use / " + arrowPool.getAvailableCount() + " available", 20, Gdx.graphics.getHeight() - 50);
         font.draw(batch, "Enemies Killed: " + enemiesKilled, 20, Gdx.graphics.getHeight() - 80);
         font.draw(batch, "Enemies Pool: " + enemyPool.getInUseCount() + " in use / " + enemyPool.getAvailableCount() + " available", 20, Gdx.graphics.getHeight() - 110);
-        font.draw(batch, "Zoom: " + String.format("%.2f", currentZoom) + "x", 20, Gdx.graphics.getHeight() - 140);
-        font.draw(batch, "WASD: Move | UP/DOWN: Zoom | R: Reset | CLICK: Shoot", 20, 20);
+        font.draw(batch, "Particles: " + particlePool.getInUseCount() + " in use / " + particlePool.getAvailableCount() + " available", 20, Gdx.graphics.getHeight() - 140);
+        font.draw(batch, "Zoom: " + String.format("%.2f", currentZoom) + "x", 20, Gdx.graphics.getHeight() - 170);
+        font.draw(batch, "Debug Hitboxes: " + (debugHitboxes ? "ON [H]" : "OFF [H]"), 20, Gdx.graphics.getHeight() - 200);
+        font.draw(batch, "WASD: Move | UP/DOWN: Zoom | R: Reset | CLICK: Shoot | H: Toggle Hitbox Debug", 20, 20);
+    }
+
+    private void createImpactParticles(float x, float y) {
+        // Cria partículas em padrão de explosão ao redor do ponto de impacto
+        Color[] colors = { Color.RED, Color.ORANGE, Color.YELLOW, Color.YELLOW };
+        int particleCount = 8;
+        
+        for (int i = 0; i < particleCount; i++) {
+            float angle = (float) (Math.PI * 2 * i / particleCount);
+            float velocityX = (float) Math.cos(angle) * 200f;
+            float velocityY = (float) Math.sin(angle) * 200f;
+            Color color = colors[i % colors.length];
+            
+            particlePool.obtain(x, y, velocityX, velocityY, 0.5f, 8f, color);
+        }
     }
 
     private void spawnEnemy() {

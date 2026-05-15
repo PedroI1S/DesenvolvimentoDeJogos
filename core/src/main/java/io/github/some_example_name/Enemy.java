@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 /**
  * Classe Enemy representa um inimigo no jogo
  * Patrulha em um padrão e pode ser destruído por flechas
+ * Usa hitbox circular para colisão mais precisa
  */
 public class Enemy {
     private Vector2 position;
@@ -14,6 +15,7 @@ public class Enemy {
     private GameTimer moveTimer;
     private float moveInterval = 3f; // Muda direção a cada 3 segundos
     private boolean alive = true;
+    private Hitbox hitbox;
     
     private static final float ENEMY_SPEED = 100f;
     private static final float ENEMY_SIZE = 12f;
@@ -23,6 +25,8 @@ public class Enemy {
         this.velocity = new Vector2(1, 0);
         this.radius = ENEMY_SIZE;
         this.moveTimer = new GameTimer(moveInterval);
+        this.hitbox = new CircleHitbox(ENEMY_SIZE);
+        this.hitbox.update(position);
         this.alive = true;
         
         // Inicia movimento aleatório
@@ -34,6 +38,7 @@ public class Enemy {
      */
     public void init(float x, float y) {
         this.position.set(x, y);
+        this.hitbox.update(position);
         this.alive = true;
         this.moveTimer.reset();
         randomizeDirection();
@@ -73,6 +78,9 @@ public class Enemy {
         // Clamp para evitar sair do mundo
         position.x = Math.max(wallLeft + radius, Math.min(position.x, wallRight - radius));
         position.y = Math.max(wallBottom + radius, Math.min(position.y, wallTop - radius));
+        
+        // Atualiza hitbox
+        hitbox.update(position);
     }
 
     public void render(ShapeRenderer shapeRenderer) {
@@ -113,10 +121,28 @@ public class Enemy {
     }
 
     /**
-     * Verifica colisão com círculo (para flechas)
+     * Verifica colisão usando a hitbox circular
+     */
+    public boolean collidesWith(Vector2 point) {
+        return hitbox.collidesWith(point);
+    }
+
+    /**
+     * Verifica colisão com outra hitbox
+     */
+    public boolean collidesWithHitbox(Hitbox other) {
+        return hitbox.collidesWith(other);
+    }
+
+    /**
+     * Verifica colisão com círculo (método antigo para compatibilidade)
      */
     public boolean collidesWith(Vector2 point, float pointRadius) {
         float distance = position.dst(point);
         return distance < (radius + pointRadius);
+    }
+
+    public Hitbox getHitbox() {
+        return hitbox;
     }
 }
