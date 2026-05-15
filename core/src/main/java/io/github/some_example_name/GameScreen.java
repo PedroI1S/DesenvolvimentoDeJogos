@@ -52,6 +52,7 @@ public class GameScreen implements Screen {
     private EnemyPool enemyPool;
     private ParticlePool particlePool;
     private SpeechBubble speechBubble;
+    private EnemyBoss boss;
     
     private float currentZoom = 1f;
     private static final float MIN_ZOOM = 0.5f;
@@ -134,6 +135,9 @@ public class GameScreen implements Screen {
         spawnEnemy();
         spawnEnemy();
         
+        // Spawn boss no centro-direita do mapa
+        boss = new EnemyBoss(WORLD_WIDTH * 0.75f, WORLD_HEIGHT / 2f);
+        
         // Inicia música
         if (backgroundMusic != null) {
             backgroundMusic.setLooping(true);
@@ -178,12 +182,22 @@ public class GameScreen implements Screen {
             }
         }
         
+        // Renderiza boss
+        if (boss != null && boss.isAlive()) {
+            boss.render(shapeRenderer);
+        }
+        
         // Renderiza hitboxes em modo debug
         if (debugHitboxes) {
             for (Enemy enemy : enemyPool.getInUse()) {
                 if (enemy.isAlive()) {
                     enemy.getHitbox().render(shapeRenderer);
                 }
+            }
+            
+            // Renderiza hitbox do boss em debug
+            if (boss != null && boss.isAlive()) {
+                boss.getHitbox().render(shapeRenderer);
             }
         }
         shapeRenderer.end();
@@ -242,6 +256,11 @@ public class GameScreen implements Screen {
             }
         }
         
+        // Atualiza boss
+        if (boss != null && boss.isAlive()) {
+            boss.update(delta, WALL_LEFT, WALL_RIGHT, WALL_BOTTOM, WALL_TOP);
+        }
+        
         // Detecta colisões entre flechas e inimigos
         for (int i = arrowsInUse.size() - 1; i >= 0; i--) {
             Arrow arrow = arrowsInUse.get(i);
@@ -274,6 +293,43 @@ public class GameScreen implements Screen {
                     }
                     
                     enemiesKilled++;
+                }
+            }
+        }
+        
+        // Detecta colisões entre flechas e boss
+        if (boss != null && boss.isAlive()) {
+            for (int i = arrowsInUse.size() - 1; i >= 0; i--) {
+                Arrow arrow = arrowsInUse.get(i);
+                if (!arrow.isAlive()) continue;
+                
+                // Cria uma hitbox temporária para a flecha e testa colisão
+                CircleHitbox arrowHitbox = new CircleHitbox(5f);
+                arrowHitbox.update(arrow.getPosition());
+                
+                if (boss.collidesWithHitbox(arrowHitbox)) {
+                    Gdx.app.log("Collision", "Arrow hit boss!");
+                    boss.kill();
+                    arrow.getLifeTimer().finished = true;
+                    
+                    Vector2 impactPos = boss.getPosition();
+                    speechBubble.show("Boss Derrotado!", impactPos.x, impactPos.y + 50f);
+                    
+                    // Cria muitas partículas de impacto para o boss
+                    for (int p = 0; p < 3; p++) {
+                        createImpactParticles(impactPos.x, impactPos.y);
+                    }
+                    
+                    if (impactSound != null) {
+                        try {
+                            impactSound.play();
+                        } catch (Exception e) {
+                            Gdx.app.error("Impact", "Error playing impact sound: " + e.getMessage());
+                        }
+                    }
+                    
+                    enemiesKilled += 5; // Boss vale 5 inimigos
+                    break;
                 }
             }
         }
