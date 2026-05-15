@@ -49,6 +49,7 @@ public class GameScreen implements Screen {
     private Archer archer;
     private ArrowPool arrowPool;
     private EnemyPool enemyPool;
+    private SpeechBubble speechBubble;
     
     private float currentZoom = 1f;
     private static final float MIN_ZOOM = 0.5f;
@@ -121,6 +122,7 @@ public class GameScreen implements Screen {
         
         // Inicializa objetos do jogo
         archer = new Archer(WORLD_WIDTH / 2f, WORLD_HEIGHT / 2f, shootSound);
+        speechBubble = new SpeechBubble(font);
         mouseWorldPos = new Vector2();
         spawnTimer = new GameTimer(SPAWN_INTERVAL);
         
@@ -172,6 +174,11 @@ public class GameScreen implements Screen {
             }
         }
         shapeRenderer.end();
+
+        batch.setProjectionMatrix(camera.combined);
+        batch.begin();
+        speechBubble.render(batch);
+        batch.end();
         
         // Renderiza UI
         batch.begin();
@@ -182,6 +189,8 @@ public class GameScreen implements Screen {
     private void update(float delta) {
         // Processa input com InputProcessor
         processInput(delta);
+
+        speechBubble.update(delta);
         
         // Atualiza câmera
         updateCamera(delta);
@@ -223,6 +232,7 @@ public class GameScreen implements Screen {
                     Gdx.app.log("Collision", "Arrow hit enemy!");
                     enemy.kill();
                     arrow.getLifeTimer().finished = true;
+                    speechBubble.show("Acertou!", enemy.getPosition().x, enemy.getPosition().y + enemy.getRadius());
                     
                     if (impactSound != null) {
                         try {
@@ -294,6 +304,7 @@ public class GameScreen implements Screen {
             arrowPool.obtain(archer.getPosition().x, archer.getPosition().y, archer.getRotation());
             archer.registerShot();
             arrowsShot++;
+            speechBubble.show("Tiro!", archer.getPosition().x, archer.getPosition().y);
             inputProcessor.touchPressed = false; // Evita múltiplos disparos
         }
         
@@ -396,5 +407,6 @@ public class GameScreen implements Screen {
         if (batch != null) batch.dispose();
         if (shapeRenderer != null) shapeRenderer.dispose();
         if (font != null) font.dispose();
+        if (speechBubble != null) speechBubble.dispose();
     }
 }
