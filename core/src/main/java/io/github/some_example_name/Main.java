@@ -4,6 +4,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 
+import io.github.some_example_name.screens.LoadingScreen;
+
 /**
  * Projeto Bow and Arrow - Protótipo minimalista
  * Gerenciador de screens com carregamento de assets via LoadingScreen

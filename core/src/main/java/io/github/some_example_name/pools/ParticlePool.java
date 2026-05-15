@@ -1,6 +1,8 @@
-package io.github.some_example_name;
+package io.github.some_example_name.pools;
 
 import com.badlogic.gdx.graphics.Color;
+
+import io.github.some_example_name.entities.Particle;
 
 /**
  * Object Pool para Particles.

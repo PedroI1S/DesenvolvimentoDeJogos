@@ -47,19 +47,30 @@ Este é um protótipo funcional de um jogo de arco e flecha em libGDX que implem
    - `Arrow`, `Archer`, `Enemy`: Gerenciam sua própria lógica
    - `Main`: Orquestra sem conhecer detalhes internos
 
+7. **🧱 Sistema de Hitboxes + Partículas de Impacto**
+    - Hitbox retangular simples (AABB) com `RectangleHitbox`
+    - Hitbox composta com múltiplas partes via `CompoundHitbox`
+    - Hitbox circular com matemática própria em `CircleHitbox`
+    - Partículas de impacto ao acertar inimigos
+    - Debug de hitboxes com tecla **H**
+    - Paredes do mapa com `WallCollider` usando retângulos
+
 ## Controles
 
 - **WASD**: Mover câmera
 - **UP/DOWN**: Aumentar/diminuir zoom
 - **R**: Reset de câmera
 - **MOUSE CLICK**: Atirar flecha (com cooldown de 0.5s)
+- **H**: Mostrar/ocultar hitboxes (debug)
 - O arqueiro aponta automaticamente para a posição do mouse
 
 ## Gameplay
 
 - **Objetivo**: Atirar em inimigos vermelhos que aparecem nas bordas da tela
 - **Inimigos**: Patrulham aleatoriamente, mudam de direção a cada 3 segundos
-- **Colisão**: Flechas eliminam inimigos ao colidir
+- **Colisão**: Flechas eliminam inimigos ao colidir e geram partículas
+- **Boss**: Inimigo com hitbox composta (múltiplas partes)
+- **Paredes**: Hitboxes retangulares impedem sair da arena
 - **UI**: Mostra estatísticas em tempo real (flechas disparadas, inimigos mortos, zoom atual)
 - **Dificuldade**: Aumenta gradualmente com spawn contínuo de inimigos
 
@@ -84,24 +95,50 @@ Este é um protótipo funcional de um jogo de arco e flecha em libGDX que implem
 - Reduz garbage collection, melhora frame rate
 - Reutiliza instâncias em vez de criar/destruir continuamente
 
+### 🧱 Hitbox Pattern
+- **Hitbox.java**: Interface base para colisão
+- **RectangleHitbox.java**: AABB simples
+- **CompoundHitbox.java**: Múltiplos retângulos agregados
+- **CircleHitbox.java**: Colisão circular com matemática própria
+- **WallCollider.java**: Paredes da arena com retângulos
+
 ## Arquivos Criados
 
 ```
 core/src/main/java/io/github/some_example_name/
 ├── Main.java              # Classe principal (Game)
-├── GameTimer.java         # Sistema de timer reutilizável (delta-based)
-├── GameInputProcessor.java # InputProcessor para input centralizado
-├── ObjectPool.java        # Abstract class para object pooling genérico
-├── ArrowPool.java         # Pool especializado para Arrows
-├── EnemyPool.java         # Pool especializado para Enemies
-├── Arrow.java             # Entidade de flecha com som e pooling
-├── Archer.java            # Entidade de arqueiro com cooldown
-├── Enemy.java             # Entidade inimiga com AI e pooling
-└── Explosion.java         # Efeito visual (auxiliar)
+├── screens/
+│   ├── GameScreen.java    # Tela principal do jogo
+│   └── LoadingScreen.java # Tela de loading dos assets
+├── entities/
+│   ├── Archer.java        # Entidade de arqueiro com cooldown
+│   ├── Arrow.java         # Entidade de flecha com som e pooling
+│   ├── Enemy.java         # Entidade inimiga com AI e pooling
+│   ├── EnemyBoss.java     # Inimigo boss com hitbox composta
+│   ├── Particle.java      # Partícula de impacto
+│   └── SpeechBubble.java  # Balão de fala (NinePatch)
+├── pools/
+│   ├── ObjectPool.java    # Pool genérico
+│   ├── ArrowPool.java     # Pool de flechas
+│   ├── EnemyPool.java     # Pool de inimigos
+│   └── ParticlePool.java  # Pool de partículas
+├── hitbox/
+│   ├── Hitbox.java        # Interface base
+│   ├── RectangleHitbox.java # AABB simples
+│   ├── CircleHitbox.java  # Hitbox circular com matemática própria
+│   ├── CompoundHitbox.java # Hitbox composta
+│   └── WallCollider.java  # Paredes com hitbox retangular
+├── input/
+│   └── GameInputProcessor.java # InputProcessor centralizado
+├── util/
+│   └── GameTimer.java     # Timer delta-based
+└── net/
+    └── PlayerStatePacket.java # Exemplo de serialização
 
 assets/sounds/
-├── shoot.wav              # Som de disparo (gerado)
-└── background.wav         # Música de background (gerado)
+├── arrow_swish.mp3        # Som de disparo
+├── arrow_impact.mp3       # Som de impacto
+└── heart_of_oak.mp3       # Música de background
 ```
 
 ## Compilação e Execução
@@ -127,8 +164,9 @@ O projeto usa `AssetManager` para gerenciar recursos:
 ```java
 // Assets carregados em create()
 assetManager = new AssetManager();
-assetManager.load("sounds/shoot.wav", Sound.class);
-assetManager.load("sounds/background.wav", Music.class);
+assetManager.load("sounds/arrow_swish.mp3", Sound.class);
+assetManager.load("sounds/arrow_impact.mp3", Sound.class);
+assetManager.load("sounds/heart_of_oak.mp3", Music.class);
 assetManager.finishLoading();
 
 // Cleanup automático em dispose()
@@ -167,16 +205,22 @@ camera.unproject(touchPoint);  // Tela → Mundo
 
 ### Som Único por Entidade
 ```java
-// Arrow.java - cada flecha tem sua própria instância de som
-public class Arrow {
-    private Sound shootSound;
-    
-    public void update(float delta) {
-        if (!soundPlayed && shootSound != null) {
-            shootSound.play();
-            soundPlayed = true;  // Toca apenas uma vez
-        }
+// Arrow.java - som toca apenas uma vez quando a flecha é obtida
+public void playShootSound() {
+    if (soundPlayed || shootSound == null) {
+        return;
     }
+
+    shootSound.play();
+    soundPlayed = true;
+}
+
+// ArrowPool.java - dispara o som ao obter do pool
+public Arrow obtain(float x, float y, float angle) {
+    Arrow arrow = obtain();
+    arrow.init(x, y, angle);
+    arrow.playShootSound();
+    return arrow;
 }
 ```
 
@@ -187,6 +231,8 @@ public class Arrow {
 - ✅ **Câmera**: Translação + Zoom + Project/Unproject
 - ✅ **Timer**: Delta-based, OO, uso em animação e eventos
 - ✅ **Baixo Acoplamento**: Cada classe responsável por si
+- ✅ **Hitboxes**: Retangular, composta e circular com matemática própria
+- ✅ **Partículas**: Efeito de impacto no momento do hit
 
 ## Detalhes Técnicos - Arquitetura
 
@@ -232,7 +278,5 @@ Para tornar o projeto mais completo:
 - Adicionar power-ups (velocidade, munição infinita)
 - Criar diferentes tipos de inimigos com comportamentos variados
 - Implementar fases/níveis com dificuldade crescente
-- Adicionar efeitos de partículas para explosões
-- Implementar som de colisão/morte do inimigo
 - Criar menu principal e tela de game over
 - Adicionar jogabilidade multijogador local

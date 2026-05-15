@@ -1,4 +1,4 @@
-package io.github.some_example_name;
+package io.github.some_example_name.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -19,12 +19,24 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.List;
 
+import io.github.some_example_name.entities.Archer;
+import io.github.some_example_name.entities.Arrow;
+import io.github.some_example_name.entities.Enemy;
+import io.github.some_example_name.entities.EnemyBoss;
+import io.github.some_example_name.entities.Particle;
+import io.github.some_example_name.entities.SpeechBubble;
+import io.github.some_example_name.hitbox.CircleHitbox;
+import io.github.some_example_name.hitbox.WallCollider;
+import io.github.some_example_name.input.GameInputProcessor;
+import io.github.some_example_name.pools.ArrowPool;
+import io.github.some_example_name.pools.EnemyPool;
+import io.github.some_example_name.pools.ParticlePool;
+import io.github.some_example_name.util.GameTimer;
+
 /**
  * GameScreen - Tela principal do jogo
  */
 public class GameScreen implements Screen {
-    private final AssetManager assetManager;
-    
     private SpriteBatch batch;
     private ShapeRenderer shapeRenderer;
     private OrthographicCamera camera;
@@ -72,8 +84,6 @@ public class GameScreen implements Screen {
     private boolean debugHitboxes = false;
 
     public GameScreen(AssetManager assetManager) {
-        this.assetManager = assetManager;
-        
         // Carrega assets do AssetManager
         try {
             shootSound = assetManager.get("sounds/arrow_swish.mp3", Sound.class);
@@ -442,7 +452,7 @@ public class GameScreen implements Screen {
         
         // Reset de câmera com R
         if (inputProcessor.rPressed) {
-            archer.setPosition((WALL_LEFT + WALL_RIGHT) / 2f, (WALL_BOTTOM + WALL_TOP) / 2f);
+            archer.setPosition(WORLD_WIDTH / 2f, WORLD_HEIGHT / 2f);
             currentZoom = 1f;
             inputProcessor.rPressed = false;
         }
@@ -473,11 +483,11 @@ public class GameScreen implements Screen {
     private void renderBackground() {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
-        // Área externa às paredes invisíveis: mais escura
+        // Fundo geral do mundo
         shapeRenderer.setColor(0.12f, 0.12f, 0.14f, 1f);
         shapeRenderer.rect(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
 
-        // Área jogável interna: cinza principal
+        // Área jogável interna
         shapeRenderer.setColor(0.5f, 0.5f, 0.5f, 1f);
         shapeRenderer.rect(WALL_LEFT, WALL_BOTTOM, WALL_RIGHT - WALL_LEFT, WALL_TOP - WALL_BOTTOM);
         

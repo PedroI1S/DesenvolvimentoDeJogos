@@ -1,6 +1,8 @@
-package io.github.some_example_name;
+package io.github.some_example_name.pools;
 
 import com.badlogic.gdx.audio.Sound;
+
+import io.github.some_example_name.entities.Arrow;
 
 /**
  * Object Pool para Arrows

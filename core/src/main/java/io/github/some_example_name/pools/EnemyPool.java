@@ -1,4 +1,6 @@
-package io.github.some_example_name;
+package io.github.some_example_name.pools;
+
+import io.github.some_example_name.entities.Enemy;
 
 /**
  * Object Pool para Enemies

@@ -1,4 +1,4 @@
-package io.github.some_example_name;
+package io.github.some_example_name.entities;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+import io.github.some_example_name.util.GameTimer;
 
 /**
  * Balão de fala com fundo em NinePatch e texto medido com GlyphLayout.

@@ -1,7 +1,12 @@
-package io.github.some_example_name;
+package io.github.some_example_name.entities;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
+
+import io.github.some_example_name.hitbox.CircleHitbox;
+import io.github.some_example_name.hitbox.CompoundHitbox;
+import io.github.some_example_name.hitbox.Hitbox;
+import io.github.some_example_name.util.GameTimer;
 
 /**
  * Boss enemy com múltiplas hitboxes agregadas (CompoundHitbox).
