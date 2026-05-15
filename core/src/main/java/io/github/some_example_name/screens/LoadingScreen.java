@@ -1,4 +1,4 @@
-package io.github.some_example_name;
+package io.github.some_example_name.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -10,6 +10,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+
+import io.github.some_example_name.Main;
 
 /**
  * Loading Screen - Carrega todos os assets antes de iniciar o jogo

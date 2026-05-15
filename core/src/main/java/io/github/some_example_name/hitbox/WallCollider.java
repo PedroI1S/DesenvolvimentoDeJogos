@@ -1,4 +1,4 @@
-package io.github.some_example_name;
+package io.github.some_example_name.hitbox;
 
 import com.badlogic.gdx.math.Vector2;
 
@@ -13,28 +13,27 @@ public class WallCollider {
     private RectangleHitbox wallLeft;
     private RectangleHitbox wallRight;
     
-    public WallCollider(float worldWidth, float worldHeight, float wallLeftX, float wallRightX, 
+    public WallCollider(float worldWidth, float worldHeight, float wallLeftX, float wallRightX,
                         float wallBottomY, float wallTopY) {
-        // Parede do topo (linha horizontal no topo)
-        // x: 0 a worldWidth, y: wallTopY a worldHeight
-        wallTop = new RectangleHitbox(worldWidth, worldHeight - wallTopY);
-        wallTop.update(new Vector2(0, wallTopY));
-        
-        // Parede do fundo (linha horizontal no fundo)
-        // x: 0 a worldWidth, y: 0 a wallBottomY
-        wallBottom = new RectangleHitbox(worldWidth, wallBottomY);
-        wallBottom.update(new Vector2(0, 0));
-        
-        // Parede da esquerda (linha vertical na esquerda)
-        // x: 0 a wallLeftX, y: 0 a worldHeight
-        wallLeft = new RectangleHitbox(wallLeftX, worldHeight);
-        wallLeft.update(new Vector2(0, 0));
-        
-        // Parede da direita (linha vertical na direita)
-        // x: wallRightX a worldWidth, y: 0 a worldHeight
-        float rightWallWidth = worldWidth - wallRightX;
-        wallRight = new RectangleHitbox(rightWallWidth, worldHeight);
-        wallRight.update(new Vector2(wallRightX, 0));
+        float wallThickness = 32f;
+        float arenaWidth = wallRightX - wallLeftX;
+        float arenaHeight = wallTopY - wallBottomY;
+
+        // Parede do topo: faixa fina sobre o limite superior da arena
+        wallTop = new RectangleHitbox(arenaWidth, wallThickness);
+        wallTop.update(new Vector2(wallLeftX + arenaWidth / 2f, wallTopY));
+
+        // Parede do fundo: faixa fina sobre o limite inferior da arena
+        wallBottom = new RectangleHitbox(arenaWidth, wallThickness);
+        wallBottom.update(new Vector2(wallLeftX + arenaWidth / 2f, wallBottomY));
+
+        // Parede da esquerda: faixa fina sobre o limite esquerdo da arena
+        wallLeft = new RectangleHitbox(wallThickness, arenaHeight);
+        wallLeft.update(new Vector2(wallLeftX, wallBottomY + arenaHeight / 2f));
+
+        // Parede da direita: faixa fina sobre o limite direito da arena
+        wallRight = new RectangleHitbox(wallThickness, arenaHeight);
+        wallRight.update(new Vector2(wallRightX, wallBottomY + arenaHeight / 2f));
     }
     
     /**
