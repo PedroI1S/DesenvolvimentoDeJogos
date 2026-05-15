@@ -16,12 +16,15 @@ public class Archer {
     
     private GameTimer shootCooldown;
     private Sound shootSound;
+    private CircleHitbox hitbox;
 
     public Archer(float x, float y, Sound sound) {
         this.position = new Vector2(x, y);
         this.rotation = 0f;
         this.shootCooldown = new GameTimer(SHOOT_COOLDOWN);
         this.shootSound = sound;
+        this.hitbox = new CircleHitbox(ARCHER_SIZE / 2);
+        this.hitbox.update(position);
     }
 
     public void update(float delta, float targetX, float targetY) {
@@ -75,9 +78,14 @@ public class Archer {
         float halfSize = ARCHER_SIZE / 2f;
         position.x = Math.max(Math.max(halfSize, minX), Math.min(position.x + deltaX, Math.min(maxX, Float.MAX_VALUE)));
         position.y = Math.max(Math.max(halfSize, minY), Math.min(position.y + deltaY, Math.min(maxY, Float.MAX_VALUE)));
+        hitbox.update(position);
     }
 
     public float getRotation() {
         return rotation;
+    }
+    
+    public CircleHitbox getHitbox() {
+        return hitbox;
     }
 }

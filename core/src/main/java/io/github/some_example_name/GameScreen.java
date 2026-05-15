@@ -53,6 +53,7 @@ public class GameScreen implements Screen {
     private ParticlePool particlePool;
     private SpeechBubble speechBubble;
     private EnemyBoss boss;
+    private WallCollider wallCollider;
     
     private float currentZoom = 1f;
     private static final float MIN_ZOOM = 0.5f;
@@ -125,6 +126,9 @@ public class GameScreen implements Screen {
         enemyPool = new EnemyPool(5, 30);
         particlePool = new ParticlePool(20, 100);
         
+        // Inicializa sistema de paredes usando RectangleHitbox
+        wallCollider = new WallCollider(WORLD_WIDTH, WORLD_HEIGHT, WALL_LEFT, WALL_RIGHT, WALL_BOTTOM, WALL_TOP);
+        
         // Inicializa objetos do jogo
         archer = new Archer(WORLD_WIDTH / 2f, WORLD_HEIGHT / 2f, shootSound);
         speechBubble = new SpeechBubble(font);
@@ -189,6 +193,9 @@ public class GameScreen implements Screen {
         
         // Renderiza hitboxes em modo debug
         if (debugHitboxes) {
+            // Renderiza hitbox do archer
+            archer.getHitbox().render(shapeRenderer);
+            
             for (Enemy enemy : enemyPool.getInUse()) {
                 if (enemy.isAlive()) {
                     enemy.getHitbox().render(shapeRenderer);
@@ -199,6 +206,13 @@ public class GameScreen implements Screen {
             if (boss != null && boss.isAlive()) {
                 boss.getHitbox().render(shapeRenderer);
             }
+            
+            // Renderiza paredes com cor verde
+            shapeRenderer.setColor(0f, 1f, 0f, 0.5f);
+            wallCollider.getWallTop().render(shapeRenderer);
+            wallCollider.getWallBottom().render(shapeRenderer);
+            wallCollider.getWallLeft().render(shapeRenderer);
+            wallCollider.getWallRight().render(shapeRenderer);
         }
         shapeRenderer.end();
 
@@ -245,6 +259,11 @@ public class GameScreen implements Screen {
         for (Arrow arrow : arrowsInUse) {
             if (arrow.isAlive()) {
                 arrow.update(delta);
+                
+                // Detecta colisão com paredes - flecha para ao bater
+                if (wallCollider.collidesWithWall(arrow.getPosition())) {
+                    arrow.getLifeTimer().finished = true;
+                }
             }
         }
         
@@ -380,15 +399,28 @@ public class GameScreen implements Screen {
         
         if (inputProcessor.wPressed) {
             archer.move(0f, moveSpeed, WALL_LEFT, WALL_RIGHT, WALL_BOTTOM, WALL_TOP);
+            // Detecta colisão com paredes
+            if (wallCollider.collidesWithWall(archer.getHitbox())) {
+                archer.move(0f, -moveSpeed, WALL_LEFT, WALL_RIGHT, WALL_BOTTOM, WALL_TOP);
+            }
         }
         if (inputProcessor.sPressed) {
             archer.move(0f, -moveSpeed, WALL_LEFT, WALL_RIGHT, WALL_BOTTOM, WALL_TOP);
+            if (wallCollider.collidesWithWall(archer.getHitbox())) {
+                archer.move(0f, moveSpeed, WALL_LEFT, WALL_RIGHT, WALL_BOTTOM, WALL_TOP);
+            }
         }
         if (inputProcessor.aPressed) {
             archer.move(-moveSpeed, 0f, WALL_LEFT, WALL_RIGHT, WALL_BOTTOM, WALL_TOP);
+            if (wallCollider.collidesWithWall(archer.getHitbox())) {
+                archer.move(moveSpeed, 0f, WALL_LEFT, WALL_RIGHT, WALL_BOTTOM, WALL_TOP);
+            }
         }
         if (inputProcessor.dPressed) {
             archer.move(moveSpeed, 0f, WALL_LEFT, WALL_RIGHT, WALL_BOTTOM, WALL_TOP);
+            if (wallCollider.collidesWithWall(archer.getHitbox())) {
+                archer.move(-moveSpeed, 0f, WALL_LEFT, WALL_RIGHT, WALL_BOTTOM, WALL_TOP);
+            }
         }
         
         // Zoom com UP/DOWN
