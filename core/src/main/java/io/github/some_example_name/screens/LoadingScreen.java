@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 import io.github.some_example_name.Main;
@@ -50,6 +51,12 @@ public class LoadingScreen implements Screen {
         
         Gdx.app.log("Loading", "Loading heart_of_oak.mp3...");
         assetManager.load("sounds/heart_of_oak.mp3", Music.class);
+
+        Gdx.app.log("Loading", "Loading Enemies.atlas...");
+        assetManager.load("enemies/Enemies.atlas", TextureAtlas.class);
+
+        Gdx.app.log("Loading", "Loading ArcherWalking.atlas...");
+        assetManager.load("character/ArcherWalking.atlas", TextureAtlas.class);
     }
 
     @Override
@@ -127,6 +134,11 @@ public class LoadingScreen implements Screen {
             if (assetManager.isLoaded("sounds/heart_of_oak.mp3")) {
                 backgroundMusic = assetManager.get("sounds/heart_of_oak.mp3", Music.class);
                 Gdx.app.log("LoadingScreen", "backgroundMusic loaded: " + (backgroundMusic != null));
+            }
+
+            if (assetManager.isLoaded("characters/ArcherWalking.atlas")) {
+                TextureAtlas atlas = assetManager.get("characters/ArcherWalking.atlas", TextureAtlas.class);
+                Gdx.app.log("LoadingScreen", "archerAtlas loaded: " + (atlas != null));
             }
         } catch (Exception e) {
             Gdx.app.error("LoadingScreen", "Error verifying assets: " + e.getMessage());

@@ -1,32 +1,32 @@
 package io.github.some_example_name.pools;
 
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+
 import io.github.some_example_name.entities.Enemy;
 
 /**
- * Object Pool para Enemies
- * Reutiliza instâncias em vez de criar/destruir continuamente
+ * Object Pool for enemies.
+ * Passes initialSize=0 to super so createNew() (which needs the atlas) is never
+ * called before the subclass field is initialized. Objects are created on demand.
  */
 public class EnemyPool extends ObjectPool<Enemy> {
+    private final TextureAtlas atlas;
 
-    public EnemyPool(int initialSize, int maxSize) {
-        super(initialSize, maxSize);
+    public EnemyPool(int maxSize, TextureAtlas atlas) {
+        super(0, maxSize);
+        this.atlas = atlas;
     }
 
     @Override
     protected Enemy createNew() {
-        // Cria enemy dummy, será inicializado ao obter do pool
-        return new Enemy(0, 0);
+        return new Enemy(0, 0, atlas);
     }
 
     @Override
     protected void reset(Enemy enemy) {
-        // Reset para estado inicial
         enemy.reset();
     }
 
-    /**
-     * Obtém enemy inicializado com posição
-     */
     public Enemy obtain(float x, float y) {
         Enemy enemy = obtain();
         enemy.init(x, y);
