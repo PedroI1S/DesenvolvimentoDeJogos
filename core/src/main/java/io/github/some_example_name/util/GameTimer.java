@@ -20,6 +20,7 @@ public class GameTimer {
             elapsed += delta;
             if (elapsed >= duration) {
                 finished = true;
+                elapsed -= duration;
             }
         }
     }
@@ -35,6 +36,14 @@ public class GameTimer {
     public void reset() {
         elapsed = 0f;
         finished = false;
+    }
+
+    public boolean consumeFinished() {
+        if (finished) {
+            finished = false;
+            return true;
+        }
+        return false;
     }
 
     public float getElapsed() {

@@ -1,0 +1,150 @@
+ArcherWalking.png
+size: 440, 880
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+pma: false
+east/frame
+  bounds: 0, 0, 88, 88
+  index: 0
+east/frame
+  bounds: 88, 0, 88, 88
+  index: 1
+east/frame
+  bounds: 176, 0, 88, 88
+  index: 2
+east/frame
+  bounds: 264, 0, 88, 88
+  index: 3
+east/frame
+  bounds: 352, 0, 88, 88
+  index: 4
+east/frame
+  bounds: 0, 88, 88, 88
+  index: 5
+north-east/frame
+  bounds: 88, 88, 88, 88
+  index: 0
+north-east/frame
+  bounds: 176, 88, 88, 88
+  index: 1
+north-east/frame
+  bounds: 264, 88, 88, 88
+  index: 2
+north-east/frame
+  bounds: 352, 88, 88, 88
+  index: 3
+north-east/frame
+  bounds: 0, 176, 88, 88
+  index: 4
+north-east/frame
+  bounds: 88, 176, 88, 88
+  index: 5
+north-west/frame
+  bounds: 176, 176, 88, 88
+  index: 0
+north-west/frame
+  bounds: 264, 176, 88, 88
+  index: 1
+north-west/frame
+  bounds: 352, 176, 88, 88
+  index: 2
+north-west/frame
+  bounds: 0, 264, 88, 88
+  index: 3
+north-west/frame
+  bounds: 88, 264, 88, 88
+  index: 4
+north-west/frame
+  bounds: 176, 264, 88, 88
+  index: 5
+north/frame
+  bounds: 264, 264, 88, 88
+  index: 0
+north/frame
+  bounds: 352, 264, 88, 88
+  index: 1
+north/frame
+  bounds: 0, 352, 88, 88
+  index: 2
+north/frame
+  bounds: 88, 352, 88, 88
+  index: 3
+north/frame
+  bounds: 176, 352, 88, 88
+  index: 4
+north/frame
+  bounds: 264, 352, 88, 88
+  index: 5
+south-east/frame
+  bounds: 352, 352, 88, 88
+  index: 0
+south-east/frame
+  bounds: 0, 440, 88, 88
+  index: 1
+south-east/frame
+  bounds: 88, 440, 88, 88
+  index: 2
+south-east/frame
+  bounds: 176, 440, 88, 88
+  index: 3
+south-east/frame
+  bounds: 264, 440, 88, 88
+  index: 4
+south-east/frame
+  bounds: 352, 440, 88, 88
+  index: 5
+south-west/frame
+  bounds: 0, 528, 88, 88
+  index: 0
+south-west/frame
+  bounds: 88, 528, 88, 88
+  index: 1
+south-west/frame
+  bounds: 176, 528, 88, 88
+  index: 2
+south-west/frame
+  bounds: 264, 528, 88, 88
+  index: 3
+south-west/frame
+  bounds: 352, 528, 88, 88
+  index: 4
+south-west/frame
+  bounds: 0, 616, 88, 88
+  index: 5
+south/frame
+  bounds: 88, 616, 88, 88
+  index: 0
+south/frame
+  bounds: 176, 616, 88, 88
+  index: 1
+south/frame
+  bounds: 264, 616, 88, 88
+  index: 2
+south/frame
+  bounds: 352, 616, 88, 88
+  index: 3
+south/frame
+  bounds: 0, 704, 88, 88
+  index: 4
+south/frame
+  bounds: 88, 704, 88, 88
+  index: 5
+west/frame
+  bounds: 176, 704, 88, 88
+  index: 0
+west/frame
+  bounds: 264, 704, 88, 88
+  index: 1
+west/frame
+  bounds: 352, 704, 88, 88
+  index: 2
+west/frame
+  bounds: 0, 792, 88, 88
+  index: 3
+west/frame
+  bounds: 88, 792, 88, 88
+  index: 4
+west/frame
+  bounds: 176, 792, 88, 88
+  index: 5

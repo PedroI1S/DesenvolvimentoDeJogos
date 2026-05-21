@@ -1,0 +1,942 @@
+Enemies.png
+size: 1008, 720
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+pma: false
+Bee_D_Death
+  bounds: 0, 0, 48, 48
+  index: 1
+Bee_D_Death
+  bounds: 48, 0, 48, 48
+  index: 2
+Bee_D_Death
+  bounds: 96, 0, 48, 48
+  index: 3
+Bee_D_Death
+  bounds: 144, 0, 48, 48
+  index: 4
+Bee_D_Death
+  bounds: 192, 0, 48, 48
+  index: 5
+Bee_D_Death
+  bounds: 240, 0, 48, 48
+  index: 6
+Bee_D_Walk
+  bounds: 288, 0, 48, 48
+  index: 1
+Bee_D_Walk
+  bounds: 336, 0, 48, 48
+  index: 2
+Bee_D_Walk
+  bounds: 384, 0, 48, 48
+  index: 3
+Bee_D_Walk
+  bounds: 432, 0, 48, 48
+  index: 4
+Bee_D_Walk
+  bounds: 480, 0, 48, 48
+  index: 5
+Bee_D_Walk
+  bounds: 528, 0, 48, 48
+  index: 6
+Bee_L_Death
+  bounds: 576, 0, 48, 48
+  index: 1
+Bee_L_Death
+  bounds: 624, 0, 48, 48
+  index: 2
+Bee_L_Death
+  bounds: 672, 0, 48, 48
+  index: 3
+Bee_L_Death
+  bounds: 720, 0, 48, 48
+  index: 4
+Bee_L_Death
+  bounds: 768, 0, 48, 48
+  index: 5
+Bee_L_Death
+  bounds: 816, 0, 48, 48
+  index: 6
+Bee_L_Walk
+  bounds: 864, 0, 48, 48
+  index: 1
+Bee_L_Walk
+  bounds: 912, 0, 48, 48
+  index: 2
+Bee_L_Walk
+  bounds: 960, 0, 48, 48
+  index: 3
+Bee_L_Walk
+  bounds: 0, 48, 48, 48
+  index: 4
+Bee_L_Walk
+  bounds: 48, 48, 48, 48
+  index: 5
+Bee_L_Walk
+  bounds: 96, 48, 48, 48
+  index: 6
+Bee_R_Death
+  bounds: 144, 48, 48, 48
+  index: 1
+Bee_R_Death
+  bounds: 192, 48, 48, 48
+  index: 2
+Bee_R_Death
+  bounds: 240, 48, 48, 48
+  index: 3
+Bee_R_Death
+  bounds: 288, 48, 48, 48
+  index: 4
+Bee_R_Death
+  bounds: 336, 48, 48, 48
+  index: 5
+Bee_R_Death
+  bounds: 384, 48, 48, 48
+  index: 6
+Bee_R_Walk
+  bounds: 432, 48, 48, 48
+  index: 1
+Bee_R_Walk
+  bounds: 480, 48, 48, 48
+  index: 2
+Bee_R_Walk
+  bounds: 528, 48, 48, 48
+  index: 3
+Bee_R_Walk
+  bounds: 576, 48, 48, 48
+  index: 4
+Bee_R_Walk
+  bounds: 624, 48, 48, 48
+  index: 5
+Bee_R_Walk
+  bounds: 672, 48, 48, 48
+  index: 6
+Bee_U_Death
+  bounds: 720, 48, 48, 48
+  index: 1
+Bee_U_Death
+  bounds: 768, 48, 48, 48
+  index: 2
+Bee_U_Death
+  bounds: 816, 48, 48, 48
+  index: 3
+Bee_U_Death
+  bounds: 864, 48, 48, 48
+  index: 4
+Bee_U_Death
+  bounds: 912, 48, 48, 48
+  index: 5
+Bee_U_Death
+  bounds: 960, 48, 48, 48
+  index: 6
+Bee_U_Walk
+  bounds: 0, 96, 48, 48
+  index: 1
+Bee_U_Walk
+  bounds: 48, 96, 48, 48
+  index: 2
+Bee_U_Walk
+  bounds: 96, 96, 48, 48
+  index: 3
+Bee_U_Walk
+  bounds: 144, 96, 48, 48
+  index: 4
+Bee_U_Walk
+  bounds: 192, 96, 48, 48
+  index: 5
+Bee_U_Walk
+  bounds: 240, 96, 48, 48
+  index: 6
+Goblin_D_Attack
+  bounds: 288, 96, 48, 48
+  index: 1
+Goblin_D_Attack
+  bounds: 336, 96, 48, 48
+  index: 2
+Goblin_D_Attack
+  bounds: 384, 96, 48, 48
+  index: 3
+Goblin_D_Attack
+  bounds: 432, 96, 48, 48
+  index: 4
+Goblin_D_Attack
+  bounds: 480, 96, 48, 48
+  index: 5
+Goblin_D_Attack
+  bounds: 528, 96, 48, 48
+  index: 6
+Goblin_D_Death
+  bounds: 576, 96, 48, 48
+  index: 1
+Goblin_D_Death
+  bounds: 624, 96, 48, 48
+  index: 2
+Goblin_D_Death
+  bounds: 672, 96, 48, 48
+  index: 3
+Goblin_D_Death
+  bounds: 720, 96, 48, 48
+  index: 4
+Goblin_D_Death
+  bounds: 768, 96, 48, 48
+  index: 5
+Goblin_D_Death
+  bounds: 816, 96, 48, 48
+  index: 6
+Goblin_D_Walk
+  bounds: 864, 96, 48, 48
+  index: 1
+Goblin_D_Walk
+  bounds: 912, 96, 48, 48
+  index: 2
+Goblin_D_Walk
+  bounds: 960, 96, 48, 48
+  index: 3
+Goblin_D_Walk
+  bounds: 0, 144, 48, 48
+  index: 4
+Goblin_D_Walk
+  bounds: 48, 144, 48, 48
+  index: 5
+Goblin_D_Walk
+  bounds: 96, 144, 48, 48
+  index: 6
+Goblin_L_Attack
+  bounds: 144, 144, 48, 48
+  index: 1
+Goblin_L_Attack
+  bounds: 192, 144, 48, 48
+  index: 2
+Goblin_L_Attack
+  bounds: 240, 144, 48, 48
+  index: 3
+Goblin_L_Attack
+  bounds: 288, 144, 48, 48
+  index: 4
+Goblin_L_Attack
+  bounds: 336, 144, 48, 48
+  index: 5
+Goblin_L_Attack
+  bounds: 384, 144, 48, 48
+  index: 6
+Goblin_L_Death
+  bounds: 432, 144, 48, 48
+  index: 1
+Goblin_L_Death
+  bounds: 480, 144, 48, 48
+  index: 2
+Goblin_L_Death
+  bounds: 528, 144, 48, 48
+  index: 3
+Goblin_L_Death
+  bounds: 576, 144, 48, 48
+  index: 4
+Goblin_L_Death
+  bounds: 624, 144, 48, 48
+  index: 5
+Goblin_L_Death
+  bounds: 672, 144, 48, 48
+  index: 6
+Goblin_L_Walk
+  bounds: 720, 144, 48, 48
+  index: 1
+Goblin_L_Walk
+  bounds: 768, 144, 48, 48
+  index: 2
+Goblin_L_Walk
+  bounds: 816, 144, 48, 48
+  index: 3
+Goblin_L_Walk
+  bounds: 864, 144, 48, 48
+  index: 4
+Goblin_L_Walk
+  bounds: 912, 144, 48, 48
+  index: 5
+Goblin_L_Walk
+  bounds: 960, 144, 48, 48
+  index: 6
+Goblin_R_Attack
+  bounds: 0, 192, 48, 48
+  index: 1
+Goblin_R_Attack
+  bounds: 48, 192, 48, 48
+  index: 2
+Goblin_R_Attack
+  bounds: 96, 192, 48, 48
+  index: 3
+Goblin_R_Attack
+  bounds: 144, 192, 48, 48
+  index: 4
+Goblin_R_Attack
+  bounds: 192, 192, 48, 48
+  index: 5
+Goblin_R_Attack
+  bounds: 240, 192, 48, 48
+  index: 6
+Goblin_R_Death
+  bounds: 288, 192, 48, 48
+  index: 1
+Goblin_R_Death
+  bounds: 336, 192, 48, 48
+  index: 2
+Goblin_R_Death
+  bounds: 384, 192, 48, 48
+  index: 3
+Goblin_R_Death
+  bounds: 432, 192, 48, 48
+  index: 4
+Goblin_R_Death
+  bounds: 480, 192, 48, 48
+  index: 5
+Goblin_R_Death
+  bounds: 528, 192, 48, 48
+  index: 6
+Goblin_R_Walk
+  bounds: 576, 192, 48, 48
+  index: 1
+Goblin_R_Walk
+  bounds: 624, 192, 48, 48
+  index: 2
+Goblin_R_Walk
+  bounds: 672, 192, 48, 48
+  index: 3
+Goblin_R_Walk
+  bounds: 720, 192, 48, 48
+  index: 4
+Goblin_R_Walk
+  bounds: 768, 192, 48, 48
+  index: 5
+Goblin_R_Walk
+  bounds: 816, 192, 48, 48
+  index: 6
+Goblin_U_Attack
+  bounds: 864, 192, 48, 48
+  index: 1
+Goblin_U_Attack
+  bounds: 912, 192, 48, 48
+  index: 2
+Goblin_U_Attack
+  bounds: 960, 192, 48, 48
+  index: 3
+Goblin_U_Attack
+  bounds: 0, 240, 48, 48
+  index: 4
+Goblin_U_Attack
+  bounds: 48, 240, 48, 48
+  index: 5
+Goblin_U_Attack
+  bounds: 96, 240, 48, 48
+  index: 6
+Goblin_U_Death
+  bounds: 144, 240, 48, 48
+  index: 1
+Goblin_U_Death
+  bounds: 192, 240, 48, 48
+  index: 2
+Goblin_U_Death
+  bounds: 240, 240, 48, 48
+  index: 3
+Goblin_U_Death
+  bounds: 288, 240, 48, 48
+  index: 4
+Goblin_U_Death
+  bounds: 336, 240, 48, 48
+  index: 5
+Goblin_U_Death
+  bounds: 384, 240, 48, 48
+  index: 6
+Goblin_U_Walk
+  bounds: 432, 240, 48, 48
+  index: 1
+Goblin_U_Walk
+  bounds: 480, 240, 48, 48
+  index: 2
+Goblin_U_Walk
+  bounds: 528, 240, 48, 48
+  index: 3
+Goblin_U_Walk
+  bounds: 576, 240, 48, 48
+  index: 4
+Goblin_U_Walk
+  bounds: 624, 240, 48, 48
+  index: 5
+Goblin_U_Walk
+  bounds: 672, 240, 48, 48
+  index: 6
+Slime_D_Death2
+  bounds: 720, 240, 48, 48
+  index: 1
+Slime_D_Death2
+  bounds: 768, 240, 48, 48
+  index: 2
+Slime_D_Death2
+  bounds: 816, 240, 48, 48
+  index: 3
+Slime_D_Death2
+  bounds: 864, 240, 48, 48
+  index: 4
+Slime_D_Death2
+  bounds: 912, 240, 48, 48
+  index: 5
+Slime_D_Death2
+  bounds: 960, 240, 48, 48
+  index: 6
+Slime_D_Death
+  bounds: 0, 288, 48, 48
+  index: 1
+Slime_D_Death
+  bounds: 48, 288, 48, 48
+  index: 2
+Slime_D_Death
+  bounds: 96, 288, 48, 48
+  index: 3
+Slime_D_Death
+  bounds: 144, 288, 48, 48
+  index: 4
+Slime_D_Death
+  bounds: 192, 288, 48, 48
+  index: 5
+Slime_D_Death
+  bounds: 240, 288, 48, 48
+  index: 6
+Slime_D_Special
+  bounds: 288, 288, 48, 48
+  index: 1
+Slime_D_Special
+  bounds: 336, 288, 48, 48
+  index: 2
+Slime_D_Special
+  bounds: 384, 288, 48, 48
+  index: 3
+Slime_D_Special
+  bounds: 432, 288, 48, 48
+  index: 4
+Slime_D_Special
+  bounds: 480, 288, 48, 48
+  index: 5
+Slime_D_Special
+  bounds: 528, 288, 48, 48
+  index: 6
+Slime_D_Walk2
+  bounds: 576, 288, 48, 48
+  index: 1
+Slime_D_Walk2
+  bounds: 624, 288, 48, 48
+  index: 2
+Slime_D_Walk2
+  bounds: 672, 288, 48, 48
+  index: 3
+Slime_D_Walk2
+  bounds: 720, 288, 48, 48
+  index: 4
+Slime_D_Walk2
+  bounds: 768, 288, 48, 48
+  index: 5
+Slime_D_Walk2
+  bounds: 816, 288, 48, 48
+  index: 6
+Slime_D_Walk
+  bounds: 864, 288, 48, 48
+  index: 1
+Slime_D_Walk
+  bounds: 912, 288, 48, 48
+  index: 2
+Slime_D_Walk
+  bounds: 960, 288, 48, 48
+  index: 3
+Slime_D_Walk
+  bounds: 0, 336, 48, 48
+  index: 4
+Slime_D_Walk
+  bounds: 48, 336, 48, 48
+  index: 5
+Slime_D_Walk
+  bounds: 96, 336, 48, 48
+  index: 6
+Slime_L_Death2
+  bounds: 144, 336, 48, 48
+  index: 1
+Slime_L_Death2
+  bounds: 192, 336, 48, 48
+  index: 2
+Slime_L_Death2
+  bounds: 240, 336, 48, 48
+  index: 3
+Slime_L_Death2
+  bounds: 288, 336, 48, 48
+  index: 4
+Slime_L_Death2
+  bounds: 336, 336, 48, 48
+  index: 5
+Slime_L_Death2
+  bounds: 384, 336, 48, 48
+  index: 6
+Slime_L_Death
+  bounds: 432, 336, 48, 48
+  index: 1
+Slime_L_Death
+  bounds: 480, 336, 48, 48
+  index: 2
+Slime_L_Death
+  bounds: 528, 336, 48, 48
+  index: 3
+Slime_L_Death
+  bounds: 576, 336, 48, 48
+  index: 4
+Slime_L_Death
+  bounds: 624, 336, 48, 48
+  index: 5
+Slime_L_Death
+  bounds: 672, 336, 48, 48
+  index: 6
+Slime_L_Special
+  bounds: 720, 336, 48, 48
+  index: 1
+Slime_L_Special
+  bounds: 768, 336, 48, 48
+  index: 2
+Slime_L_Special
+  bounds: 816, 336, 48, 48
+  index: 3
+Slime_L_Special
+  bounds: 864, 336, 48, 48
+  index: 4
+Slime_L_Special
+  bounds: 912, 336, 48, 48
+  index: 5
+Slime_L_Special
+  bounds: 960, 336, 48, 48
+  index: 6
+Slime_L_Walk2
+  bounds: 0, 384, 48, 48
+  index: 1
+Slime_L_Walk2
+  bounds: 48, 384, 48, 48
+  index: 2
+Slime_L_Walk2
+  bounds: 96, 384, 48, 48
+  index: 3
+Slime_L_Walk2
+  bounds: 144, 384, 48, 48
+  index: 4
+Slime_L_Walk2
+  bounds: 192, 384, 48, 48
+  index: 5
+Slime_L_Walk2
+  bounds: 240, 384, 48, 48
+  index: 6
+Slime_L_Walk
+  bounds: 288, 384, 48, 48
+  index: 1
+Slime_L_Walk
+  bounds: 336, 384, 48, 48
+  index: 2
+Slime_L_Walk
+  bounds: 384, 384, 48, 48
+  index: 3
+Slime_L_Walk
+  bounds: 432, 384, 48, 48
+  index: 4
+Slime_L_Walk
+  bounds: 480, 384, 48, 48
+  index: 5
+Slime_L_Walk
+  bounds: 528, 384, 48, 48
+  index: 6
+Slime_R_Death2
+  bounds: 576, 384, 48, 48
+  index: 1
+Slime_R_Death2
+  bounds: 624, 384, 48, 48
+  index: 2
+Slime_R_Death2
+  bounds: 672, 384, 48, 48
+  index: 3
+Slime_R_Death2
+  bounds: 720, 384, 48, 48
+  index: 4
+Slime_R_Death2
+  bounds: 768, 384, 48, 48
+  index: 5
+Slime_R_Death2
+  bounds: 816, 384, 48, 48
+  index: 6
+Slime_R_Death
+  bounds: 864, 384, 48, 48
+  index: 1
+Slime_R_Death
+  bounds: 912, 384, 48, 48
+  index: 2
+Slime_R_Death
+  bounds: 960, 384, 48, 48
+  index: 3
+Slime_R_Death
+  bounds: 0, 432, 48, 48
+  index: 4
+Slime_R_Death
+  bounds: 48, 432, 48, 48
+  index: 5
+Slime_R_Death
+  bounds: 96, 432, 48, 48
+  index: 6
+Slime_R_Special
+  bounds: 144, 432, 48, 48
+  index: 1
+Slime_R_Special
+  bounds: 192, 432, 48, 48
+  index: 2
+Slime_R_Special
+  bounds: 240, 432, 48, 48
+  index: 3
+Slime_R_Special
+  bounds: 288, 432, 48, 48
+  index: 4
+Slime_R_Special
+  bounds: 336, 432, 48, 48
+  index: 5
+Slime_R_Special
+  bounds: 384, 432, 48, 48
+  index: 6
+Slime_R_Walk2
+  bounds: 432, 432, 48, 48
+  index: 1
+Slime_R_Walk2
+  bounds: 480, 432, 48, 48
+  index: 2
+Slime_R_Walk2
+  bounds: 528, 432, 48, 48
+  index: 3
+Slime_R_Walk2
+  bounds: 576, 432, 48, 48
+  index: 4
+Slime_R_Walk2
+  bounds: 624, 432, 48, 48
+  index: 5
+Slime_R_Walk2
+  bounds: 672, 432, 48, 48
+  index: 6
+Slime_R_Walk
+  bounds: 720, 432, 48, 48
+  index: 1
+Slime_R_Walk
+  bounds: 768, 432, 48, 48
+  index: 2
+Slime_R_Walk
+  bounds: 816, 432, 48, 48
+  index: 3
+Slime_R_Walk
+  bounds: 864, 432, 48, 48
+  index: 4
+Slime_R_Walk
+  bounds: 912, 432, 48, 48
+  index: 5
+Slime_R_Walk
+  bounds: 960, 432, 48, 48
+  index: 6
+Slime_U_Death2
+  bounds: 0, 480, 48, 48
+  index: 1
+Slime_U_Death2
+  bounds: 48, 480, 48, 48
+  index: 2
+Slime_U_Death2
+  bounds: 96, 480, 48, 48
+  index: 3
+Slime_U_Death2
+  bounds: 144, 480, 48, 48
+  index: 4
+Slime_U_Death2
+  bounds: 192, 480, 48, 48
+  index: 5
+Slime_U_Death2
+  bounds: 240, 480, 48, 48
+  index: 6
+Slime_U_Death
+  bounds: 288, 480, 48, 48
+  index: 1
+Slime_U_Death
+  bounds: 336, 480, 48, 48
+  index: 2
+Slime_U_Death
+  bounds: 384, 480, 48, 48
+  index: 3
+Slime_U_Death
+  bounds: 432, 480, 48, 48
+  index: 4
+Slime_U_Death
+  bounds: 480, 480, 48, 48
+  index: 5
+Slime_U_Death
+  bounds: 528, 480, 48, 48
+  index: 6
+Slime_U_Special
+  bounds: 576, 480, 48, 48
+  index: 1
+Slime_U_Special
+  bounds: 624, 480, 48, 48
+  index: 2
+Slime_U_Special
+  bounds: 672, 480, 48, 48
+  index: 3
+Slime_U_Special
+  bounds: 720, 480, 48, 48
+  index: 4
+Slime_U_Special
+  bounds: 768, 480, 48, 48
+  index: 5
+Slime_U_Special
+  bounds: 816, 480, 48, 48
+  index: 6
+Slime_U_Walk2
+  bounds: 864, 480, 48, 48
+  index: 1
+Slime_U_Walk2
+  bounds: 912, 480, 48, 48
+  index: 2
+Slime_U_Walk2
+  bounds: 960, 480, 48, 48
+  index: 3
+Slime_U_Walk2
+  bounds: 0, 528, 48, 48
+  index: 4
+Slime_U_Walk2
+  bounds: 48, 528, 48, 48
+  index: 5
+Slime_U_Walk2
+  bounds: 96, 528, 48, 48
+  index: 6
+Slime_U_Walk
+  bounds: 144, 528, 48, 48
+  index: 1
+Slime_U_Walk
+  bounds: 192, 528, 48, 48
+  index: 2
+Slime_U_Walk
+  bounds: 240, 528, 48, 48
+  index: 3
+Slime_U_Walk
+  bounds: 288, 528, 48, 48
+  index: 4
+Slime_U_Walk
+  bounds: 336, 528, 48, 48
+  index: 5
+Slime_U_Walk
+  bounds: 384, 528, 48, 48
+  index: 6
+Wolf_D_Attack
+  bounds: 432, 528, 48, 48
+  index: 1
+Wolf_D_Attack
+  bounds: 480, 528, 48, 48
+  index: 2
+Wolf_D_Attack
+  bounds: 528, 528, 48, 48
+  index: 3
+Wolf_D_Attack
+  bounds: 576, 528, 48, 48
+  index: 4
+Wolf_D_Attack
+  bounds: 624, 528, 48, 48
+  index: 5
+Wolf_D_Attack
+  bounds: 672, 528, 48, 48
+  index: 6
+Wolf_D_Death
+  bounds: 720, 528, 48, 48
+  index: 1
+Wolf_D_Death
+  bounds: 768, 528, 48, 48
+  index: 2
+Wolf_D_Death
+  bounds: 816, 528, 48, 48
+  index: 3
+Wolf_D_Death
+  bounds: 864, 528, 48, 48
+  index: 4
+Wolf_D_Death
+  bounds: 912, 528, 48, 48
+  index: 5
+Wolf_D_Death
+  bounds: 960, 528, 48, 48
+  index: 6
+Wolf_D_Walk
+  bounds: 0, 576, 48, 48
+  index: 1
+Wolf_D_Walk
+  bounds: 48, 576, 48, 48
+  index: 2
+Wolf_D_Walk
+  bounds: 96, 576, 48, 48
+  index: 3
+Wolf_D_Walk
+  bounds: 144, 576, 48, 48
+  index: 4
+Wolf_D_Walk
+  bounds: 192, 576, 48, 48
+  index: 5
+Wolf_D_Walk
+  bounds: 240, 576, 48, 48
+  index: 6
+Wolf_L_Attack
+  bounds: 288, 576, 48, 48
+  index: 1
+Wolf_L_Attack
+  bounds: 336, 576, 48, 48
+  index: 2
+Wolf_L_Attack
+  bounds: 384, 576, 48, 48
+  index: 3
+Wolf_L_Attack
+  bounds: 432, 576, 48, 48
+  index: 4
+Wolf_L_Attack
+  bounds: 480, 576, 48, 48
+  index: 5
+Wolf_L_Attack
+  bounds: 528, 576, 48, 48
+  index: 6
+Wolf_L_Death
+  bounds: 576, 576, 48, 48
+  index: 1
+Wolf_L_Death
+  bounds: 624, 576, 48, 48
+  index: 2
+Wolf_L_Death
+  bounds: 672, 576, 48, 48
+  index: 3
+Wolf_L_Death
+  bounds: 720, 576, 48, 48
+  index: 4
+Wolf_L_Death
+  bounds: 768, 576, 48, 48
+  index: 5
+Wolf_L_Death
+  bounds: 816, 576, 48, 48
+  index: 6
+Wolf_L_Walk
+  bounds: 864, 576, 48, 48
+  index: 1
+Wolf_L_Walk
+  bounds: 912, 576, 48, 48
+  index: 2
+Wolf_L_Walk
+  bounds: 960, 576, 48, 48
+  index: 3
+Wolf_L_Walk
+  bounds: 0, 624, 48, 48
+  index: 4
+Wolf_L_Walk
+  bounds: 48, 624, 48, 48
+  index: 5
+Wolf_L_Walk
+  bounds: 96, 624, 48, 48
+  index: 6
+Wolf_R_Attack
+  bounds: 144, 624, 48, 48
+  index: 1
+Wolf_R_Attack
+  bounds: 192, 624, 48, 48
+  index: 2
+Wolf_R_Attack
+  bounds: 240, 624, 48, 48
+  index: 3
+Wolf_R_Attack
+  bounds: 288, 624, 48, 48
+  index: 4
+Wolf_R_Attack
+  bounds: 336, 624, 48, 48
+  index: 5
+Wolf_R_Attack
+  bounds: 384, 624, 48, 48
+  index: 6
+Wolf_R_Death
+  bounds: 432, 624, 48, 48
+  index: 1
+Wolf_R_Death
+  bounds: 480, 624, 48, 48
+  index: 2
+Wolf_R_Death
+  bounds: 528, 624, 48, 48
+  index: 3
+Wolf_R_Death
+  bounds: 576, 624, 48, 48
+  index: 4
+Wolf_R_Death
+  bounds: 624, 624, 48, 48
+  index: 5
+Wolf_R_Death
+  bounds: 672, 624, 48, 48
+  index: 6
+Wolf_R_Walk
+  bounds: 720, 624, 48, 48
+  index: 1
+Wolf_R_Walk
+  bounds: 768, 624, 48, 48
+  index: 2
+Wolf_R_Walk
+  bounds: 816, 624, 48, 48
+  index: 3
+Wolf_R_Walk
+  bounds: 864, 624, 48, 48
+  index: 4
+Wolf_R_Walk
+  bounds: 912, 624, 48, 48
+  index: 5
+Wolf_R_Walk
+  bounds: 960, 624, 48, 48
+  index: 6
+Wolf_U_Attack
+  bounds: 0, 672, 48, 48
+  index: 1
+Wolf_U_Attack
+  bounds: 48, 672, 48, 48
+  index: 2
+Wolf_U_Attack
+  bounds: 96, 672, 48, 48
+  index: 3
+Wolf_U_Attack
+  bounds: 144, 672, 48, 48
+  index: 4
+Wolf_U_Attack
+  bounds: 192, 672, 48, 48
+  index: 5
+Wolf_U_Attack
+  bounds: 240, 672, 48, 48
+  index: 6
+Wolf_U_Death
+  bounds: 288, 672, 48, 48
+  index: 1
+Wolf_U_Death
+  bounds: 336, 672, 48, 48
+  index: 2
+Wolf_U_Death
+  bounds: 384, 672, 48, 48
+  index: 3
+Wolf_U_Death
+  bounds: 432, 672, 48, 48
+  index: 4
+Wolf_U_Death
+  bounds: 480, 672, 48, 48
+  index: 5
+Wolf_U_Death
+  bounds: 528, 672, 48, 48
+  index: 6
+Wolf_U_Walk
+  bounds: 576, 672, 48, 48
+  index: 1
+Wolf_U_Walk
+  bounds: 624, 672, 48, 48
+  index: 2
+Wolf_U_Walk
+  bounds: 672, 672, 48, 48
+  index: 3
+Wolf_U_Walk
+  bounds: 720, 672, 48, 48
+  index: 4
+Wolf_U_Walk
+  bounds: 768, 672, 48, 48
+  index: 5
+Wolf_U_Walk
+  bounds: 816, 672, 48, 48
+  index: 6
